@@ -59,17 +59,19 @@ export class CellGrid {
     {
         return this.arr[this.get_location(x,y)];
     }
+    
     get_tile_index(index)
     {
         return this.arr[index];
     }
+
     set_tile(x,y, bool)
     {
         position = get_tile(x,y);
         this.arr[position] = bool;
     }
 
-
+    
 
 
     get_top(x,y)
@@ -96,13 +98,14 @@ export class CellGrid {
         }
         return this.get_location(x+1,y);
     }
-    get_down_right(x,y)
+
+    get_bottom_right(x,y)
     {
-        if(this.width < x+1)
+        if(this.width < x+1 || this.length < y+1)
         {
             return -1
         }
-        return this.get_location(x+1,y);
+        return this.get_location(x+1,y+1);
     }
 
     get_top_left(x,y)
@@ -113,6 +116,7 @@ export class CellGrid {
         }
         return this.get_location(x+1,y-1);
     }
+
     get_left(x,y)
     {
         if(this.width*y > x-1)
@@ -122,7 +126,16 @@ export class CellGrid {
         return this.get_location(x-1,y);
     }
 
-    get_down(x,y)
+    get_bottom_left(x,y)
+    {
+        if(this.width*y > x-1 || this.length < y+1)
+        {
+            return -1
+        }
+        return this.get_location(x-1,y+1);
+    }
+
+    get_bottom(x,y)
     {
         if(this.length < y+1)
         {
@@ -130,7 +143,6 @@ export class CellGrid {
         }
         return this.get_location(x,y+1);
     }
-
 
 
 }
