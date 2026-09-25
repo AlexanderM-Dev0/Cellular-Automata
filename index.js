@@ -33,19 +33,12 @@ import * as cell_engine from "./cellular-automata.js";
     container.pivot.x = 0;
     container.pivot.y = 0;
 
-    console.log("finished loop")
-
-    let elipsed_time = 0;
-
-    
-
     // Listen for animate update
     app.ticker.add((time) => {
-        elipsed_time += time;
         if(simulation_flag)
         {
-            engine.tick();
             engine.render(container, app.screen.width, app.screen.height, 0x00FF00, 0x000000)
+            engine.tick();
         }
     });
 })();
